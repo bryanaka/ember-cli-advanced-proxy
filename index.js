@@ -8,15 +8,19 @@ module.exports = {
   serverMiddleware: function(config) {
     var app = config.app;
     var options = config.options;
-    var proxyAddon = new AdvancedProxyAddon(config);
-    app.stack.forEach(function(middleware) {
-      console.log('\n\n\n');
-      console.log(middleware);
-      console.log('\n\n\n');
+    var proxyAddon = new AdvancedProxyAddon(config.project);
+    // TODO: THIS IS A HUGE HACK.
+    // We shouldn't be removing middleware from the stack
+    // and it we can match on anonymous functions, so no guarentees
+    var middlewareStack = (app._router.stack || [])
+    var middlewareToRemove = 9;
+    if(middlewareStack.length > middlewareToRemove){
+      middlewareStack.splice(middlewareToRemove, 1);
+      app._router.stack = middlewareStack;
+    }
+    proxyAddon.serverMiddleware({
+      app: app,
+      options: options
     });
-    // proxyAddon.serverMiddleware({
-    //   app: app,
-    //   options: options
-    // });
   }
 };
