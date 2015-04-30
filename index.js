@@ -12,12 +12,12 @@ module.exports = {
     // TODO: THIS IS A HUGE HACK.
     // We shouldn't be removing middleware from the stack
     // and it we can match on anonymous functions, so no guarentees
-    // var middlewareStack = (app._router.stack || [])
-    // var middlewareToRemove = 9;
-    // if(middlewareStack.length > middlewareToRemove){
-    //   middlewareStack.splice(middlewareToRemove, 1);
-    //   app._router.stack = middlewareStack;
-    // }
+    var middlewareStack = (app._router.stack || [])
+    var middlewareToRemove = 9;
+    if(middlewareStack.length > middlewareToRemove){
+      middlewareStack.splice(middlewareToRemove, 1);
+      app._router.stack = middlewareStack;
+    }
     proxyAddon.serverMiddleware({
       app: app,
       options: options
