@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-advanced-proxy",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "The default blueprint for ember-cli addons.",
   "directories": {
     "doc": "doc",
@@ -38,10 +38,7 @@
     "proxy"
   ],
   "dependencies": {
-    "ember-cli-babel": "^5.0.0",
-    "ember-cli-version-checker": "^1.0.2",
-    "http-proxy": "^1.11.1",
-    "morgan": "^1.5.2"
+    "http-proxy": "^1.11.1"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
