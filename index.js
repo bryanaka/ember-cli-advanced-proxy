@@ -13,7 +13,7 @@ module.exports = {
     // We shouldn't be removing middleware from the stack
     // and it we can match on anonymous functions, so no guarentees
     var middlewareStack = (app._router.stack || [])
-    var middlewareToRemove = 10;
+    var middlewareToRemove = 11;
     if(middlewareStack.length > middlewareToRemove){
       middlewareStack.splice(middlewareToRemove, 1);
       app._router.stack = middlewareStack;
